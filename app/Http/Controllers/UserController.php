@@ -76,4 +76,43 @@ class UserController extends Controller
         $results = DB::select('select * from users where address = ?', array($user->address));
         return response($results, 200);
     }
+    public function __checkUserName($user_name)
+    {
+        $result = DB::select('SELECT  `user_name` FROM `users` where `user_name` = ?', array($user_name));
+        return $result;
+    }
+    public function __register(Request $request)
+    {
+        $user = new Users();
+        $user->user_name = $request->user_name;
+        $user->password = Hash::make($request->password);
+        $user->created_at = Carbon::now();
+        $user->updated_at = Carbon::now();
+        $resultCheck = $this->__checkUserName($user->user_name);
+
+        if (count($resultCheck) === 0) {
+            $result = DB::insert('INSERT INTO `users`(`user_name`, `password`, `address`, `gender`, `phone`, `created_at`, `updated_at`) VALUES (?,?, "", 0, "",? , ?)', array($user->user_name, $user->password, $user->created_at, $user->updated_at));
+            // $user->touch();
+            if ($result == 1) {
+                return response()->json(["message: " => "Register successfully"], 200);
+            } else {
+                return response()->json(["message: " => "Register fail"], 200);
+            }
+        } else {
+            return response()->json(["message: " => "Wrong user name"], 200);
+        }
+    }
+    public function __login(Request $request)
+    {
+        $user = new Users();
+        $user->user_name = $request->user_name;
+        $user->password = $request->password;
+        $result = DB::select('SELECT `user_name`, `password` FROM `users` WHERE `user_name` = ?', array($user->user_name));
+        $password_hash = $result[0]->password; // lấy password đã hash trên database
+        if (Hash::check($user->password, $password_hash)) { // check 2 password với nhaux
+            return response()->json(["message: " => "Login successfully"], 200);
+        } else {
+            return response()->json(["message: " => "Login fail"], 200);
+        }
+    }
 }
