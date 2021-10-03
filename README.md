@@ -14,4 +14,12 @@ B3: Open your .env file and change the database name (DB_DATABASE) to whatever y
 B4: php artisan key:generate </br>
 B5: php artisan migrate </br>
 B6: php artisan serve </br>
+
+
+## Một số câu lệnh chính trong laravel
+ - php artisan make:model ... -m </br>
+ - php artisan make:controller ... </br>
+ - php artisan migrate </br>
+ - php artisan serve </br>
+ - php artisan migrate:rollback </br>
 ## Make by HoangHuynh2012
