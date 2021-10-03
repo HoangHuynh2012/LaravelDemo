@@ -8,10 +8,10 @@
 </p>
 
 ## Cách chạy project
-###B1: open cmd and run composer install
-###B2: Copy .env.example file to .env on the root folder. You can type copy .env.example --> .env
-###B3: Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
-###B4: php artisan key:generate 
-###B5: php artisan migrate 
-###B6: php artisan serve
+B1: open cmd and run composer install </br>
+B2: Copy .env.example file to .env on the root folder. You can type copy .env.example --> .env </br>
+B3: Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration. </br>
+B4: php artisan key:generate </br>
+B5: php artisan migrate </br>
+B6: php artisan serve </br>
 ## Make by HoangHuynh2012
