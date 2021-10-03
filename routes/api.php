@@ -35,8 +35,13 @@ Route::get('getAllCategory', [CategoryController::class, "__getAll"]);
 Route::post('addDataCategory', [CategoryController::class, "__insert"]);
 Route::post('updateCategory', [CategoryController::class, "__update"]);
 Route::post('deleteCategory', [CategoryController::class, "__delete"]);
+Route::post('getCategoryById', [CategoryController::class, "__getCategoryById"]);
 //API Product
 Route::get('getAllProduct', [ProductController::class, "__getAll"]);
 Route::post('addDataProduct', [ProductController::class, "__insert"]);
 Route::post('updateProduct', [ProductController::class, "__update"]);
 Route::post('deleteProduct', [ProductController::class, "__delete"]);
+Route::post('getProductById', [ProductController::class, "__getProductById"]);
+// get product by category_id
+Route::post('getProductsByCategotyId', [ProductController::class, "__getProductsByCategotyId"]);
+Route::post('getCountProductsByCategoryId', [ProductController::class, "__getCountProductsByCategoryId"]);
